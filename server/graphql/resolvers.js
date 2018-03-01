@@ -25,7 +25,9 @@ export default {
     structures: (project) => filter(structures, { projectId: project.id }),
   },
   Prediction: {
-    results: (prediction) => filter(structures, {predictionId: prediction.id}),
+    results: (prediction, args) => {
+      return args.limit ? filter(structures, {predictionId: prediction.id}).slice(0,args.limit) : filter(structures, {predictionId: prediction.id});
+    },
     root: (prediction) => find(structures, {id: prediction.rootStructureId})
   }
 };

@@ -31,7 +31,7 @@ const typeDefs = `
   type Prediction {
     id: Int!
     "Structures produced by running prediction"
-    results: [Structure]
+    results(limit: Int): [Structure]
     root: Structure!
   }
   type Query {
